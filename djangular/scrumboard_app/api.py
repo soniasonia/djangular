@@ -1,15 +1,16 @@
 from rest_framework.generics import ListAPIView
+from rest_framework.viewsets import ModelViewSet
 
-from .serializer import ListSerializer, CardSerializer
+from .serializers import ListSerializer, CardSerializer
 from .models import List, Card
 
 
-class ListApi(ListAPIView):
+class ListViewSet(ModelViewSet):
     queryset = List.objects.all()  # From where it takes data
     serializer_class = ListSerializer  # Specifies what fields are converted to JSON
 
 
-class CardApi(ListAPIView):
+class CardViewSet(ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
