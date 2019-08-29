@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+    <head>
+        <title>Scrumboard Demo</title>
+        <link rel="stylesheet" href="{% static 'scrumboard_app/base.css' %}">
+    </head>
+    <body ng-app="scrumboard.demo">
+    {% verbatim %}
+        <!-- DIV is VIEW (HTML element to display data) -->
+        <div ng-controller="ScrumboardController">
+            <div ng-repeat="list in data">
+                <h3>{{ list.name }}</h3>
+                <ul>
+                    <li ng-repeat="card in list.cards">{{ card.title }}</li>
+                </ul>
+                <input type="text" ng-model="new_title" />
+                <button ng-click="add(list, new_title)">+</button>
+            </div>
+        </div>
+    {% endverbatim %}
+        <script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src ="{% static 'scrumboard_app/scrumboard.js' %}"></script>
+    </body>
+        <!--Scope is dependancy. Second argument of controller method is list of dependencies
+        // and last item is actual controller function
+
+        // Function defines some data as an example (MODEL) -->
+</html>
