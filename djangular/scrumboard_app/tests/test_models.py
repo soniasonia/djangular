@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
-from scrumboard.models import Card, List
+from scrumboard_app.models import Card, List
 from unittest import skip
 
 
@@ -23,7 +23,7 @@ class CardModelTest(TestCase):
             card = Card(title="Pierwsza karta", list=list_)
             card.full_clean()
 
-    def can_save_card_to_different_list(self):
+    def test_can_save_card_to_different_list(self):
         list1 = List.objects.create(name="Pierwsza lista")
         list2 = List.objects.create(name="Druga lista")
         Card.objects.create(title="Pierwsza karta", list=list1)

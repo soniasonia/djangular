@@ -32,6 +32,18 @@ ul {
     margin: 0px
 }
 
+.card button,
+.card input,
+.card textarea {
+color: #404040;
+margin: 2px 0 px;
+}
+
+.card textarea {
+width: 100%;
+resize: vertical;
+}
+
 .description {
     color: lightgray;
 }
