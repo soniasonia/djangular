@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'scrumboard_app',
-    'rest_framework'
+    'rest_framework',
+    'auth_api',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'djangular.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,8 +121,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+# TODO: High level static
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/scrumboard_app/static/',
+    os.path.join(BASE_DIR, 'static'),
+    '/scrumboard/static/',
 ]
+
+# All front-end goes to top-level static folder
+# Home template is exception because it is Django template
+# TODO: Fixes: djangular/urls.py, home.html, card.directive.js,
+
+# TODO: Angular Routing
+# add ngRoute module
+# Configure URLs and Views
+# home.html for global layout
+# Use ng-view to include views
+
+# TODO: Login/Logout
+# ng-submit to handle submit button
+# LoginController
