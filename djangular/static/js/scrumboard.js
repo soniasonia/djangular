@@ -3,9 +3,9 @@
     angular
     .module('scrumboard.demo', ['ngRoute'])
     .controller('ScrumboardController',
-    ['$scope', '$http', ScrumboardController]);
+    ['$scope', '$http', 'Login', ScrumboardController]);
 
-    function ScrumboardController($scope, $http) {
+    function ScrumboardController($scope, $http, Login) {
         $scope.add = function (list, title) {
             var card = {
                 list: list.id,
@@ -21,12 +21,17 @@
                 );
         };
 
+        Login.redirectIfNotLoggedIn();
         $scope.data = [];
-        $http.get('/scrumboard/lists/').then(function(response){
-            $scope.data = response.data;
-        }),
+        $scope.logout = Login.logout;
         $scope.sortBy='story_points';
         $scope.reverse=true;
         $scope.showFilter=false;
+
+        $http.get('/scrumboard/lists/').then(
+            function(response){
+                $scope.data = response.data;
+            }
+        );
     }
 }())

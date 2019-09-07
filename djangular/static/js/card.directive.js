@@ -23,13 +23,18 @@
                     );
                 };
 
+                function removeCardFromList(card, list){
+                    var cards = list.cards;
+                        cards.splice(
+                            cards.indexOf(card),
+                            1
+                        );
+                    }
+
                 $scope.delete = function() {
                     $http.delete(url).then(
                         function(){
-                            var cards = $scope.list.cards;
-                            cards.splice(cards.indexOf($scope.card),
-                            1
-                            );
+                            removeCardFromList($scope.card, $scope.list);
                         }
                     );
                 };
