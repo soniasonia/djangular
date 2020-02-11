@@ -23,17 +23,14 @@
                     );
                 };
 
-                function removeCardFromList(card, list){
+                function removeCardFromList(card, list) {
                     var cards = list.cards;
-                        cards.splice(
-                            cards.indexOf(card),
-                            1
-                        );
-                    }
+                        cards.splice(cards.indexOf(card), 1);
+                }
 
                 $scope.delete = function() {
                     $http.delete(url).then(
-                        function(){
+                        function() {
                             removeCardFromList($scope.card, $scope.list);
                         }
                     );
@@ -45,7 +42,7 @@
 
                 $scope.move = function () {
                     if ($scope.destList === undefined) {
-                        return;
+                            return;
                         }
                         $scope.card.list = $scope.destList.id;
                         $scope.update().then(function () {
